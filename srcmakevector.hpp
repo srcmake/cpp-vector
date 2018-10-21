@@ -15,6 +15,8 @@ namespace srcmake
         public:
             // Constructors.
             vector();
+            vector(int);
+            vector(int, int);
         };
     /////////////////////////////////////
 
@@ -22,5 +24,17 @@ namespace srcmake
     vector<T>::vector()
         {
         std::cout << "Called srcmake::vector empty constructor.\n";
+        }
+    
+    template<class T>
+    vector<T>::vector(int size)
+        {
+        std::cout << "Called srcmake::vector size constructor.\n";
+        }
+    
+    template<class T>
+    vector<T>::vector(int size, int initialValue)
+        {
+        std::cout << "Called srcmake::vector size, initial value constructor.\n";
         }
     }

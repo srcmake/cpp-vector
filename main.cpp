@@ -7,7 +7,8 @@ int main()
 	std::cout << "Program started.\n";
 	
 	srcmake::vector<int> vec1;
-	srcmake::vector<int> vec2(5);
+	srcmake::vector<bool> vec2(5);
+	srcmake::vector<int> vec3(10, 1);
 
 
 	std::cout << "Program ended.\n";
