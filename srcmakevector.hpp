@@ -26,6 +26,11 @@ namespace srcmake
             vector(int);
             vector(int, T);
             ~vector();
+            T operator [ ] (int index);
+            int size();
+            void push_back(T element);
+            void erase(int index);
+            void insert(int index, T element);
         };
     /////////////////////////////////////
     /////////////////////////////////////
@@ -137,13 +142,31 @@ namespace srcmake
     /////////////////////////////////////
     /////////////////////////////////////
     
+    /////////////////////////////////////
+    /// MOVE SEMANTICS (Copy and Move) //
+    /////////////////////////////////////
+    // Copy Constructor
+    // Copy Assignment Operator
+    // Move Constructor
+    // Move Assignment Operator
+    /////////////////////////////////////
+    /////////////////////////////////////
+
     
     /////////////////////////////////////
-    ///// OPERATORS /////
+    ///// OPERATORS (EXTERNAL) /////
     /////////////////////////////////////
     // []
-    // = 
+    template<class T>
+    T vector<T>::operator [ ] (int index)
+        {
+        // TODO: Error handling to make sure the index is in range.
+        return mArray[index];
+        }
+
     // Iterator for for-each loop
+    // TODO
+    // begin() and end() here?
     /////////////////////////////////////
     /////////////////////////////////////
     
@@ -151,10 +174,37 @@ namespace srcmake
     /////////////////////////////////////
     ///// EXTERNAL FUNCTIONS /////
     /////////////////////////////////////
-    // size
-    // push back
-    // erase
+    // size - return the size of the vector. 
+    template<class T>
+    int vector<T>::size()
+        {
+        return mSize;
+        }
+    
+    // push back - Add an element to the array.
+    template<class T>
+    void vector<T>::push_back(T element)
+        {
+        // TODO Fill in
+        // TODO: Error handling if the element is the wrong type.
+        }
+
+    // erase - Remove the element at the specified index.
+    template<class T>
+    void vector<T>::erase(int index)
+        {
+        // TODO Fill in
+        // TODO: Error handling if index is out of range.
+        }
+
     // insert
+    template<class T>
+    void vector<T>::insert(int index, T element)
+        {
+        // TODO Fill in
+        // TODO: Error handling if index is out of range.
+        // TODO: Error handling if the element is the wrong type.
+        }
     /////////////////////////////////////
     /////////////////////////////////////
     }
