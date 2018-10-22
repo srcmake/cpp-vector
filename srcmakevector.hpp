@@ -116,14 +116,20 @@ namespace srcmake
     template<class T>
     void vector<T>::CheckIfArrayIsTooSmall()
         {
-        // TODO Fill in
+        if(mCapacity == mSize)
+            {
+            DoubleArraySize();
+            }
         }
     
     // Check if the array is small. If so, reduce the size.
     template<class T>
     void vector<T>::CheckIfArrayIsTooBig()
         {
-        // TODO Fill in
+        if(mCapacity == 2*mSize)
+            {
+            ReduceArraySize();
+            }
         }
 
     // Make the array bigger. 
@@ -131,6 +137,12 @@ namespace srcmake
     void vector<T>::DoubleArraySize()
         {
         // TODO Fill in
+        // Create a new array with double the current capacity. 
+        
+        // Copy the current array to the new array.
+        // Delete the current array.
+        // Make the pointer point to the new array.
+        // Update the capacity variable.
         }
     
     // Make the array smaller (3/4 the current size).
@@ -138,6 +150,11 @@ namespace srcmake
     void vector<T>::ReduceArraySize()
         {
         // TODO Fill in
+        // Create a new array with 3/4 the current capacity. 
+        // Copy the current array to the new array.
+        // Delete the current array.
+        // Make the pointer point to the new array.
+        // Update the capacity variable.
         }
     /////////////////////////////////////
     /////////////////////////////////////
@@ -185,7 +202,9 @@ namespace srcmake
     template<class T>
     void vector<T>::push_back(T element)
         {
-        // TODO Fill in
+        // TODO: Fill in
+        // Check if the array needs to be made larger.
+        // Update the size/capacity variables.
         // TODO: Error handling if the element is the wrong type.
         }
 
@@ -194,6 +213,7 @@ namespace srcmake
     void vector<T>::erase(int index)
         {
         // TODO Fill in
+        // Update the size variables.
         // TODO: Error handling if index is out of range.
         }
 
@@ -202,6 +222,8 @@ namespace srcmake
     void vector<T>::insert(int index, T element)
         {
         // TODO Fill in
+        // Check if the array needs to be made larger.
+        // Update the size variable.
         // TODO: Error handling if index is out of range.
         // TODO: Error handling if the element is the wrong type.
         }
