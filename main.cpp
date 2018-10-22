@@ -10,6 +10,10 @@ int main()
 	srcmake::vector<bool> vec2(5);
 	srcmake::vector<int> vec3(10, 1);
 
+	std::cout << vec3[5] << std::endl;
+	vec3.push_back(20);
+	std::cout << vec3[10] << std::endl;
+
 
 	std::cout << "Program ended.\n";
 	return 0;

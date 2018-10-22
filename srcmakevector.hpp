@@ -26,11 +26,11 @@ namespace srcmake
             vector(int);
             vector(int, T);
             ~vector();
-            T operator [ ] (int index);
+            T operator [ ] (const int);
             int size();
-            void push_back(T element);
-            void erase(int index);
-            void insert(int index, T element);
+            void push_back(const T);
+            void erase(const int);
+            void insert(const int, const T);
         };
     /////////////////////////////////////
     /////////////////////////////////////
@@ -138,11 +138,25 @@ namespace srcmake
         {
         // TODO Fill in
         // Create a new array with double the current capacity. 
+        T* newArray = new T[mCapacity*2];
         
         // Copy the current array to the new array.
+        // TODO: Use STL algorithm here.
+        for(int i = 0; i < mSize; i++)
+            {
+            newArray[i] = mArray[i];
+            }
+
         // Delete the current array.
+        DeleteArray();
+
         // Make the pointer point to the new array.
+        mArray = newArray;
+        
         // Update the capacity variable.
+        mCapacity = mCapacity * 2;
+
+        std::cout << "Resized the array from " << mCapacity/2 << " to " << mCapacity << ".\n";
         }
     
     // Make the array smaller (3/4 the current size).
@@ -175,7 +189,7 @@ namespace srcmake
     /////////////////////////////////////
     // []
     template<class T>
-    T vector<T>::operator [ ] (int index)
+    T vector<T>::operator [ ] (const int index)
         {
         // TODO: Error handling to make sure the index is in range.
         return mArray[index];
@@ -200,29 +214,42 @@ namespace srcmake
     
     // push back - Add an element to the array.
     template<class T>
-    void vector<T>::push_back(T element)
+    void vector<T>::push_back(const T element)
         {
-        // TODO: Fill in
+        std::cout << "Pushing an element into the array.\n";
+
         // Check if the array needs to be made larger.
-        // Update the size/capacity variables.
+        CheckIfArrayIsTooSmall();
+        
+        // Add this element to the array.
+        mArray[mSize] = element;
+        
+        // Increment the size.
+        mSize += 1;
+
         // TODO: Error handling if the element is the wrong type.
         }
 
     // erase - Remove the element at the specified index.
     template<class T>
-    void vector<T>::erase(int index)
+    void vector<T>::erase(const int index)
         {
         // TODO Fill in
+        // Copy the elements from [index+1, size-1] to [index, size-2].
+        // Delete the element at size-1.
         // Update the size variables.
+        // Check if we need to resize the array, if the capacity is too large.
         // TODO: Error handling if index is out of range.
         }
 
     // insert
     template<class T>
-    void vector<T>::insert(int index, T element)
+    void vector<T>::insert(const int index, const T element)
         {
         // TODO Fill in
         // Check if the array needs to be made larger.
+        // Copy the elements from [index, size-1] to [index+1, size].
+        // Set the array at the index to the element.
         // Update the size variable.
         // TODO: Error handling if index is out of range.
         // TODO: Error handling if the element is the wrong type.
