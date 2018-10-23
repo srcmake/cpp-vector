@@ -20,6 +20,7 @@ namespace srcmake
             void CheckIfArrayIsTooBig();
             void DoubleArraySize();
             void ReduceArraySize();
+            void ChangeArrayCapacityTo(const int);
 
         public:
             vector();
@@ -136,12 +137,29 @@ namespace srcmake
     template<class T>
     void vector<T>::DoubleArraySize()
         {
-        // TODO Fill in
-        // Create a new array with double the current capacity. 
-        T* newArray = new T[mCapacity*2];
+        auto newCapacity = mCapacity*2;
+        ChangeArrayCapacityTo(newCapacity);
+        }
+    
+    // Make the array smaller (3/4 the current size).
+    template<class T>
+    void vector<T>::ReduceArraySize()
+        {
+        auto newCapacity = mCapacity*3/4;
+        if(newCapacity > 0)
+            {
+            ChangeArrayCapacityTo(newCapacity);
+            }
+        }
+
+    // Change the array's capacity to the specified new capacity.
+    template<class T>
+    void vector<T>::ChangeArrayCapacityTo(const int newCapacity)
+        {
+        // Create a new array with the specified new capacity. 
+        T* newArray = new T[newCapacity];
         
         // Copy the current array to the new array.
-        // TODO: Use STL algorithm here.
         for(int i = 0; i < mSize; i++)
             {
             newArray[i] = mArray[i];
@@ -152,23 +170,11 @@ namespace srcmake
 
         // Make the pointer point to the new array.
         mArray = newArray;
-        
-        // Update the capacity variable.
-        mCapacity = mCapacity * 2;
 
-        std::cout << "Resized the array from " << mCapacity/2 << " to " << mCapacity << ".\n";
-        }
-    
-    // Make the array smaller (3/4 the current size).
-    template<class T>
-    void vector<T>::ReduceArraySize()
-        {
-        // TODO Fill in
-        // Create a new array with 3/4 the current capacity. 
-        // Copy the current array to the new array.
-        // Delete the current array.
-        // Make the pointer point to the new array.
+        std::cout << "Resized the array from " << mCapacity << " to " << newCapacity << ".\n";
+
         // Update the capacity variable.
+        mCapacity = newCapacity;
         }
     /////////////////////////////////////
     /////////////////////////////////////
