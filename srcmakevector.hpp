@@ -264,13 +264,26 @@ namespace srcmake
     template<class T>
     void vector<T>::insert(const int index, const T element)
         {
-        // TODO Fill in
-        // Check if the array needs to be made larger.
-        // Copy the elements from [index, size-1] to [index+1, size].
-        // Set the array at the index to the element.
-        // Update the size variable.
         // TODO: Error handling if index is out of range.
         // TODO: Error handling if the element is the wrong type.
+        // TODO: Make sure unit testing handles weird edge cases for capacities and sizes.
+        std::cout << "Inserting an element into the array.\n";
+        
+        // Check if the array needs to be made larger.
+        CheckIfArrayIsTooSmall();
+        
+        // Copy the elements from [index, size-1] to [index+1, size].
+        // (Be careful about ordering, we don't want to overwrite elements.)
+        for(int i = mSize; i >= index+1; i--)
+            {
+            mArray[i] = mArray[i-1];
+            }
+        
+        // Set the array at the index to the element.
+        mArray[index] = element;
+
+        // Update the size variable.
+        mSize += 1;
         }
     /////////////////////////////////////
     /////////////////////////////////////

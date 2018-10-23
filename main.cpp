@@ -23,6 +23,12 @@ int main()
 	// vec3 has 10 members.
 	std::cout << vec3[5] << std::endl;
 	PrintVector(vec3);
+
+	// Change the values of the first 10 elements to the first 10 numbers.
+	for(int i = 0; i < vec3.size(); i++)
+		{
+		//vec3[i] = i+1;
+		}
 	
 	// Add 11 more items.
 	vec3.push_back(11);	// Will double the array to 20.
@@ -37,6 +43,14 @@ int main()
 	vec3.push_back(20);
 	PrintVector(vec3);
 	vec3.push_back(21); // Will double the array to 40
+
+	// Remove 1 item.
+	vec3.erase(0); // Will resize the array from 40 to 20.
+	PrintVector(vec3);
+	
+	// Insert one item.
+	vec3.insert(5, 90210);
+	PrintVector(vec3);
 
 	// Remove 11 items.
 	vec3.erase(0);
