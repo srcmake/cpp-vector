@@ -2,6 +2,16 @@
 #include <iostream>
 #include "srcmakevector.hpp"
 
+template<class T>
+void PrintVector(srcmake::vector<T> &vec)
+	{
+	for(int i = 0; i < vec.size(); i++)
+		{
+		std::cout << vec[i] << " ";
+		}
+	std::cout << std::endl;
+	}
+
 int main()
 	{
 	std::cout << "Program started.\n";
@@ -12,6 +22,7 @@ int main()
 
 	// vec3 has 10 members.
 	std::cout << vec3[5] << std::endl;
+	PrintVector(vec3);
 	vec3.push_back(20);	// Will double the array to 20.
 	vec3.push_back(2);
 	vec3.push_back(2);
@@ -22,6 +33,7 @@ int main()
 	vec3.push_back(2);
 	vec3.push_back(2);
 	vec3.push_back(2);
+	PrintVector(vec3);
 	vec3.push_back(2); // Will double the array to 40
 	std::cout << vec3[10] << std::endl;
 
