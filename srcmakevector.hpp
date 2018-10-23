@@ -222,6 +222,7 @@ namespace srcmake
     template<class T>
     void vector<T>::push_back(const T element)
         {
+        // TODO: Error handling if the element is the wrong type.
         std::cout << "Pushing an element into the array.\n";
 
         // Check if the array needs to be made larger.
@@ -232,20 +233,31 @@ namespace srcmake
         
         // Increment the size.
         mSize += 1;
-
-        // TODO: Error handling if the element is the wrong type.
         }
 
     // erase - Remove the element at the specified index.
     template<class T>
     void vector<T>::erase(const int index)
         {
-        // TODO Fill in
-        // Copy the elements from [index+1, size-1] to [index, size-2].
-        // Delete the element at size-1.
-        // Update the size variables.
-        // Check if we need to resize the array, if the capacity is too large.
         // TODO: Error handling if index is out of range.
+        // TODO: Error handling if there are no elements to delete.
+        // TODO: Make sure unit testing handles weird edge cases for capacities and sizes.
+        std::cout << "Erasing an element from the array.\n";
+        
+        // Copy the elements from [index+1, size-1] to [index, size-2].
+        for(int i = index; i <= mSize-2; i++)
+            {
+            mArray[i] = mArray[i+1];
+            }
+        
+        // Delete the element at size-1. (NOTE: This isn't really necessary. This shouldn't get accessed by the user anyway. It will only get overwritten if push_back is called onto the element.)
+        mArray[mSize-1] = 0;
+
+        // Update the size variables.
+        mSize -= 1;
+
+        // Check if we need to resize the array, if the capacity is too large.
+        CheckIfArrayIsTooBig();
         }
 
     // insert

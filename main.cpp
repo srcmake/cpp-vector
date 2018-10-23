@@ -23,19 +23,48 @@ int main()
 	// vec3 has 10 members.
 	std::cout << vec3[5] << std::endl;
 	PrintVector(vec3);
-	vec3.push_back(20);	// Will double the array to 20.
-	vec3.push_back(2);
-	vec3.push_back(2);
-	vec3.push_back(2);
-	vec3.push_back(2);
-	vec3.push_back(2);
-	vec3.push_back(2);
-	vec3.push_back(2);
-	vec3.push_back(2);
-	vec3.push_back(2);
+	
+	// Add 11 more items.
+	vec3.push_back(11);	// Will double the array to 20.
+	vec3.push_back(12);
+	vec3.push_back(13);
+	vec3.push_back(14);
+	vec3.push_back(15);
+	vec3.push_back(16);
+	vec3.push_back(17);
+	vec3.push_back(18);
+	vec3.push_back(19);
+	vec3.push_back(20);
 	PrintVector(vec3);
-	vec3.push_back(2); // Will double the array to 40
-	std::cout << vec3[10] << std::endl;
+	vec3.push_back(21); // Will double the array to 40
+
+	// Remove 11 items.
+	vec3.erase(0);
+	vec3.erase(0);
+	vec3.erase(0);
+	vec3.erase(0);
+	vec3.erase(0);
+	vec3.erase(0);
+	vec3.erase(0);
+	vec3.erase(0);
+	vec3.erase(0);
+	vec3.erase(0);
+	vec3.erase(0);
+	PrintVector(vec3);
+
+	// Erase the final 10 elements in the array.
+	vec3.erase(9);
+	vec3.erase(8);
+	vec3.erase(7);
+	vec3.erase(6);
+	vec3.erase(5);
+	vec3.erase(4);
+	vec3.erase(3);
+	vec3.erase(2);
+	vec3.erase(1);
+	vec3.erase(0);
+	vec3.erase(0);
+	PrintVector(vec3);	
 
 
 	std::cout << "Program ended.\n";
