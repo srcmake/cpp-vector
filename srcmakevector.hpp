@@ -27,7 +27,7 @@ namespace srcmake
             vector(int);
             vector(int, T);
             ~vector();
-            T operator [ ] (const int);
+            T& operator [ ] (const int);
             int size();
             void push_back(const T);
             void erase(const int);
@@ -195,7 +195,7 @@ namespace srcmake
     /////////////////////////////////////
     // []
     template<class T>
-    T vector<T>::operator [ ] (const int index)
+    T& vector<T>::operator [ ] (const int index)
         {
         // TODO: Error handling to make sure the index is in range.
         return mArray[index];
@@ -223,7 +223,7 @@ namespace srcmake
     void vector<T>::push_back(const T element)
         {
         // TODO: Error handling if the element is the wrong type.
-        std::cout << "Pushing an element into the array.\n";
+        //std::cout << "Pushing an element into the array.\n";
 
         // Check if the array needs to be made larger.
         CheckIfArrayIsTooSmall();
@@ -242,7 +242,7 @@ namespace srcmake
         // TODO: Error handling if index is out of range.
         // TODO: Error handling if there are no elements to delete.
         // TODO: Make sure unit testing handles weird edge cases for capacities and sizes.
-        std::cout << "Erasing an element from the array.\n";
+        //std::cout << "Erasing an element from the array.\n";
         
         // Copy the elements from [index+1, size-1] to [index, size-2].
         for(int i = index; i <= mSize-2; i++)
@@ -267,7 +267,7 @@ namespace srcmake
         // TODO: Error handling if index is out of range.
         // TODO: Error handling if the element is the wrong type.
         // TODO: Make sure unit testing handles weird edge cases for capacities and sizes.
-        std::cout << "Inserting an element into the array.\n";
+        //std::cout << "Inserting an element into the array.\n";
         
         // Check if the array needs to be made larger.
         CheckIfArrayIsTooSmall();
